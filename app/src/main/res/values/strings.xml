@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Proyecto Progra 3</string>
+    <string name="title_activity_contactos">contactos</string>
 </resources>
