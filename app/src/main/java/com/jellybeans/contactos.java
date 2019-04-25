@@ -1,7 +1,10 @@
 package com.jellybeans;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,6 +28,17 @@ public class contactos extends AppCompatActivity {
             nombreContactos.add(contacto.getNombre() + " " + contacto.getApellido());
         }
         lvContactos.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, nombreContactos));
+        lvContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(contactos.this, DetalleContactosActivity.class);
+                intent.putExtra("NOMBRECONTACTO", contactos.get(position).getNombre());
+                intent.putExtra("APELLIDOCONTACTO", contactos.get(position).getApellido());
+                intent.putExtra("TELEFONOCONTACTO", contactos.get(position).getTelefono());
+                intent.putExtra("CORREOCONTACTO", contactos.get(position).getCorreo());
+                startActivity(intent);
+            }
+        });
 
 
 
