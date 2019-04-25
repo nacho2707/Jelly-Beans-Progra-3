@@ -81,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Empezar"
+            android:onClick="doLogin"
      />
 
     </LinearLayout>
