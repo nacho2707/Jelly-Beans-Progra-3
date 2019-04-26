@@ -22,11 +22,10 @@ public class DetalleContactosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_contactos);
-        Bundle bundle = getIntent().getExtras();
-        String nombre = bundle.getString("NOMBRECONTACTO");
-        String apellido = bundle.getString("APELLIDOCONTACTO");
-        final int telefono = bundle.getInt("TELEFONOCONTACTO");
-        String correo = bundle.getString("CORREOCONTACTO");
+        String nombre = getIntent().getStringExtra("NOMBRECONTACTO");
+        String apellido = getIntent().getStringExtra("APELLIDOCONTACTO");
+        final int telefono = getIntent().getIntExtra("TELEFONOCONTACTO", 0);
+        String correo = getIntent().getStringExtra("CORREOCONTACTO");
 
         tvNombre = (TextView) findViewById(R.id.tvNombre);
         tvApellido = (TextView) findViewById(R.id.tvApellido);
@@ -37,7 +36,7 @@ public class DetalleContactosActivity extends AppCompatActivity {
 
         tvNombre.setText(nombre);
         tvApellido.setText(apellido);
-        tvTelefono.setText(telefono);
+        tvTelefono.setText(String.valueOf(telefono));
         tvCorreo.setText(correo);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
 
