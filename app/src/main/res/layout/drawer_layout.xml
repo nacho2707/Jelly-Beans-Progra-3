@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/drawer_header_layout" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraButtons"
+        android:text="Ver mapa"
+        android:onClick="goToMap"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraButtons"
+        android:text="Disponibilidad de asientos y reservas"
+        android:onClick="goToDisponibilidadAsientos"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraButtons"
+        android:text="Contactos"
+        android:onClick="goToContacts"
+        android:layout_margin="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraButtons"
+        android:text="rutas y horarios"
+        android:onClick="goToRutasHorarios"
+        android:layout_margin="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraButtons"
+        android:text="Información"
+        android:onClick="goToInformation"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>
