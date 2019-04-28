@@ -41,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if(TextUtils.isEmpty(contraseña)){
-            editTextCodigo.setError("Campo obligatorio");
-            editTextCodigo.requestFocus();
+            editTextContraseña.setError("Campo obligatorio");
+            editTextContraseña.requestFocus();
             return;
         }
 
