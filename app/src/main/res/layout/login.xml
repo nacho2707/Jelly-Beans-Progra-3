@@ -42,9 +42,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:imeOptions="actionNext"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLines="1"
-
+                android:id="@+id/editTextCodigo"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -72,7 +72,7 @@
                 android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:maxLines="1"
-
+                android:id="@+id/editTextContraseña"
                 android:textSize="18sp" />
         </LinearLayout>
 

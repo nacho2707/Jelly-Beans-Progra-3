@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:backgroud="#F44336"
+        android:background="#F44336"
         android:paddingLeft="30px"
         android:text="Tarifas"
         android:textSize="22sp"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:TextSize="15sp"
+        android:textSize="15sp"
         android:text="Humbold - Campus       3bs"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-16dp"
@@ -39,7 +39,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:TextSize="15sp"
+        android:textSize="15sp"
         android:text="Cualquier parte de la ciudad - Campus       5bs"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
@@ -48,7 +48,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:TextSize="15sp"
+        android:textSize="15sp"
         android:text="Tarjeta           180bs"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
