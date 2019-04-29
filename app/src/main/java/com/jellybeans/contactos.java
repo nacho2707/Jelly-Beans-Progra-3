@@ -1,6 +1,7 @@
 package com.jellybeans;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,10 @@ public class contactos extends AppCompatActivity {
     ListView lvContactos;
     ArrayList<Contacto> contactos;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_contactos);
+        setupActionBar();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactos);
         lvContactos = (ListView) findViewById(R.id.lvcontactos);
@@ -41,5 +45,13 @@ public class contactos extends AppCompatActivity {
         });
 
 
+    }
+
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("Contactos");
+        }
     }
 }

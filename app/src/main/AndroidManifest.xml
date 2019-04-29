@@ -14,16 +14,21 @@
         <activity android:name=".MensajeAlerta"></activity>
         <activity android:name=".AsientosBus" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".DetalleContactosActivity" />
-        <activity android:name=".contactos" />
+        <activity android:name=".DetalleContactosActivity" android:parentActivityName=".contactos"></activity>
+        <activity android:name=".contactos" android:parentActivityName=".MainActivity"></activity> />
         <activity android:name=".LoginActivity">
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+
+
 
         <meta-data
             android:name="com.google.android.gms.version"
