@@ -15,7 +15,7 @@ public class MensajeAlerta extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mensaje_alerta);
+        setContentView(R.layout.activity_asientos_bus);
         aceptar =(Button) findViewById(R.id.btnAceptar);
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
