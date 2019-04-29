@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MensajeAlerta"></activity>
         <activity android:name=".AsientosBus" />
-        <activity android:name=".MapActivity" />
+        <activity android:name=".MapActivity" android:parentActivityName=".MainActivity"></activity>/>
         <activity android:name=".DetalleContactosActivity" android:parentActivityName=".contactos"></activity>
         <activity android:name=".contactos" android:parentActivityName=".MainActivity"></activity> />
         <activity android:name=".LoginActivity">
