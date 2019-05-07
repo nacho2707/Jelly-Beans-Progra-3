@@ -25,7 +25,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToDisponibilidadAsientos(View view){
-        Intent intent = new Intent(this, AsientosBus.class);
+        Intent intent = new Intent(this, MensajeAlerta.class);
+        startActivity(intent);
+    }
+
+    public void goToRutasHorarios(View view){
+        Intent intent = new Intent(this,RutasBus.class);
         startActivity(intent);
     }
 
