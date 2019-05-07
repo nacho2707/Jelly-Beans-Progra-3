@@ -2,6 +2,7 @@ package com.jellybeans;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,21 +17,33 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText editTextCodigo;
     EditText editTextContraseña;
+
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this,"bdUsuarios",1);
+        ConexionSQLiteHelper conn= new ConexionSQLiteHelper(this, bdUsuarios,1);
 
+        sharedPreferences=getSharedPreferences("OneTimeLogin",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("loginValue",false)==true){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }else{
+
+        }
     }
+
+
 
     public void doLogin(View view){
         editTextCodigo= (EditText) findViewById(R.id.editTextCodigo);
         editTextContraseña= (EditText) findViewById(R.id.editTextContraseña);
-        /*Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         //revisar deberia ser en un onClick
-        registrarUsuarios();
+        //registrarUsuarios();
 
         validar();
     }
