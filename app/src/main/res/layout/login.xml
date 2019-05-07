@@ -62,7 +62,8 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/title_contraseña"
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:layout_width="match_parent"

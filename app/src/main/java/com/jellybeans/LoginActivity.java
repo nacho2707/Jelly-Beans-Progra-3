@@ -1,12 +1,16 @@
 package com.jellybeans;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.jellybeans.utilidades.Utilidades;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -16,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this,"bdUsuarios",1);
+
     }
 
     public void doLogin(View view){
@@ -23,8 +29,21 @@ public class LoginActivity extends AppCompatActivity {
         editTextContraseña= (EditText) findViewById(R.id.editTextContraseña);
         /*Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);*/
+        //revisar deberia ser en un onClick
+        registrarUsuarios();
 
         validar();
+    }
+    //este ,etodo deberia ir en un pantalla de registrar usuario
+    public void registrarUsuarios(){
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this,"bdUsuarios",1);
+        SQLiteDatabase db=conn.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_CODIGO,editTextCodigo.getText().toString());
+        values.put(Utilidades.CAMPO_CONTRASENA,editTextContraseña.getText().toString());
+        Long idResultante = db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CODIGO,values);
+        Toast.makeText(getApplicationContext(),"Codigo Registro: " + idResultante, Toast.LENGTH_SHORT).show();
+
     }
 
     public void validar(){
