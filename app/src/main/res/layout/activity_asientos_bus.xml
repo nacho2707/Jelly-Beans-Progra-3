@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/mapabusooficial"
+        android:background="@drawable/nuevo_mapa_bus"
         android:columnCount="4">
     </GridLayout>
 
