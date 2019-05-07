@@ -1,22 +1,13 @@
 package com.jellybeans.entidades;
 
 public class Usuario {
-    private Integer id;
     private String codigo;
     private String contrasena;
 
-    public Usuario(Integer id, String codigo, String contrasena) {
-        this.id = id;
+    public Usuario( String codigo, String contrasena) {
+
         this.codigo = codigo;
         this.contrasena = contrasena;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getCodigo() {
