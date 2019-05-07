@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        ConexionSQLiteHelper conn= new ConexionSQLiteHelper(this, bdUsuarios,1);
+        ConexionSQLiteHelper conn= new ConexionSQLiteHelper(this, "bdUsuarios",1);
 
         sharedPreferences=getSharedPreferences("OneTimeLogin",MODE_PRIVATE);
         if(sharedPreferences.getBoolean("loginValue",false)==true){
@@ -40,10 +40,9 @@ public class LoginActivity extends AppCompatActivity {
     public void doLogin(View view){
         editTextCodigo= (EditText) findViewById(R.id.editTextCodigo);
         editTextContraseña= (EditText) findViewById(R.id.editTextContraseña);
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
         //revisar deberia ser en un onClick
-        //registrarUsuarios();
+        registrarUsuarios();
 
         validar();
     }
@@ -56,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
         values.put(Utilidades.CAMPO_CONTRASENA,editTextContraseña.getText().toString());
         Long idResultante = db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CODIGO,values);
         Toast.makeText(getApplicationContext(),"Codigo Registro: " + idResultante, Toast.LENGTH_SHORT).show();
-
     }
 
     public void validar(){
