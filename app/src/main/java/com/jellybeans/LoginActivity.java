@@ -41,10 +41,20 @@ public class LoginActivity extends AppCompatActivity {
         editTextCodigo= (EditText) findViewById(R.id.editTextCodigo);
         editTextContraseña= (EditText) findViewById(R.id.editTextContraseña);
 
-        //revisar deberia ser en un onClick
-
         validar();
+        //validarDatos();
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+
+        //registrarUsuarios();
+    }
+
+    public void registro(){
         registrarUsuarios();
+
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+
     }
     //este ,etodo deberia ir en un pantalla de registrar usuario
     public void registrarUsuarios(){
@@ -85,8 +95,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
 
     }
 
