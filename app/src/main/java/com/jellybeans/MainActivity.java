@@ -15,19 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        sharedPreferences = getSharedPreferences("OneTimeLogin", MODE_PRIVATE);
-
-        boolean value= true;
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putBoolean("loginValue", value);
-
-        editor.apply();
-        editor.commit();
-
-
     }
 
     public void goToContacts(View view){
