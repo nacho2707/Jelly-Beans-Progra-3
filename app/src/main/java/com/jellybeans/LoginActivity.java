@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         values.put(Utilidades.CAMPO_CONTRASENA,editTextContraseña.getText().toString());
         Long idResultante = db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CODIGO,values);
         Toast.makeText(getApplicationContext(),"Codigo Registro: " + idResultante, Toast.LENGTH_SHORT).show();
+        db.close();
     }
 
     public void validar(){
