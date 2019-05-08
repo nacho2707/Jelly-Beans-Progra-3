@@ -14,6 +14,7 @@ public class AsientosBus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asientos_bus);
+        setupActionBar();
     }
     public void onclick(View view){
         if (view.getId()==R.id.btnAceptar){

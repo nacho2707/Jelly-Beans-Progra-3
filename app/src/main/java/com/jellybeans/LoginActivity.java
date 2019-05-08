@@ -44,22 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         //revisar deberia ser en un onClick
 
         validar();
-
-        //validarBaseDeDatos();
-
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void registro(){
-
-        validar();
         registrarUsuarios();
-
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-
     }
     //este ,etodo deberia ir en un pantalla de registrar usuario
     public void registrarUsuarios(){
@@ -99,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
 
     }
 
