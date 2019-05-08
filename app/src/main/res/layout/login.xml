@@ -45,7 +45,9 @@
                 android:inputType="number"
                 android:maxLines="1"
                 android:id="@+id/editTextCodigo"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/colorExtraButtons"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -74,7 +76,9 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:id="@+id/editTextContraseña"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/colorExtraButtons"
+                />
         </LinearLayout>
 
         <Button
