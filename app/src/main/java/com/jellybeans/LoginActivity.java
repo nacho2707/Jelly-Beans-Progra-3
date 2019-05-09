@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         conn = new ConexionSQLiteHelper(this, "bdUsuarios", 1);
@@ -50,6 +51,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registro(View view) {
+        if (validar()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+
+        }
         registrarUsuarios();
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -63,13 +70,30 @@ public class LoginActivity extends AppCompatActivity {
 
     //este ,etodo deberia ir en un pantalla de registrar usuario
     public void registrarUsuarios() {
-        SQLiteDatabase db = conn.getWritableDatabase();
+        /*SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Utilidades.CAMPO_CODIGO, editTextCodigo.getText().toString());
         values.put(Utilidades.CAMPO_CONTRASENA, editTextContraseña.getText().toString());
         Long idResultante = db.insert(Utilidades.TABLA_USUARIO, Utilidades.CAMPO_CODIGO, values);
         Toast.makeText(getApplicationContext(), "Codigo Registro: " + idResultante, Toast.LENGTH_SHORT).show();
-        db.close();
+        db.close();*/
+
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String codigo = editTextCodigo.getText().toString();
+        String contrasena = editTextContraseña.getText().toString();
+        if(!codigo.isEmpty() && !contrasena.isEmpty()){
+            ContentValues registro = new ContentValues();
+            registro.put("codigo", codigo);
+            registro.put("contrasena", contrasena);
+            db.insert("usuarios",null, registro);
+            db.close();
+            editTextCodigo.setText("");
+            editTextContraseña.setText("");
+            Toast.makeText(this,"Registro exitoso", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
     public boolean validar() {

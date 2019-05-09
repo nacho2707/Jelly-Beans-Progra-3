@@ -48,4 +48,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
           mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.marcador_bus_round)).anchor(0.0f,1.0f).position(bus).title("Bus Sopocachi"));
     }
 
+
 }

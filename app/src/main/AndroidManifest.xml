@@ -39,6 +39,7 @@
         <activity
             android:name=".AsientosBus"
             android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".MapActivity" />
         <activity
