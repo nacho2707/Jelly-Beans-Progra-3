@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
 
     //este ,etodo deberia ir en un pantalla de registrar usuario
     public void registrarUsuarios() {
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bdUsuarios", 1);
         SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Utilidades.CAMPO_CODIGO, editTextCodigo.getText().toString());
@@ -98,38 +97,16 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
-        validarDatos();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        return true;
+        return validarDatos();
     }
     // Select de la base de datos con un filtro
     public boolean validarDatos() {
         try {
-
             Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM TABLA_USUARIO WHERE codigo = ? AND contrasena = ?"
                     , new String[]{editTextCodigo.getText().toString(),editTextContraseña.getText().toString()});
             if (cursor.moveToNext()== false) {
                 Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_LONG).show();
                 return false;
-
-
             }
             cursor.close();
             return true;
