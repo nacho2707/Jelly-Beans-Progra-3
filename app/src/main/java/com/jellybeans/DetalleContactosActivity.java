@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,8 @@ public class DetalleContactosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_detalle_contactos);
+        setupActionBar();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_contactos);
         String nombre = getIntent().getStringExtra("NOMBRECONTACTO");
@@ -45,7 +48,7 @@ public class DetalleContactosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telefono));
                 if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED);
-                   // TODO: Consider calling
+                   //TODOConsider calling
                    // ActivityCompat#requestPermissions
                    // here to request the missing permissions, and then overriding
                    // public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grandResults)
@@ -60,5 +63,13 @@ public class DetalleContactosActivity extends AppCompatActivity {
             //startDetalleContactosActivity(intent);
 
         });
+    }
+
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("Datos Personales");
+        }
     }
 }

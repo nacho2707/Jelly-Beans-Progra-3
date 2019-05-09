@@ -44,4 +44,12 @@
         android:onClick="goToInformation"
         android:layout_margin="10dp"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorExtraButtons"
+        android:text="Salir de la cuenta"
+        android:onClick="goToLogOut"
+        android:layout_margin="10dp"/>
+
 </LinearLayout>

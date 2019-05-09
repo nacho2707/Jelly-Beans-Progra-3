@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/btn1"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="RESERVE SU ASIENTO Y PULSE ACEPTAR"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:onClick="onclick"
+        android:text="Aceptar"
+        tools:layout_editor_absoluteX="182dp"
+        tools:layout_editor_absoluteY="451dp" />
+
+    <GridLayout
+        android:id="@+id/gridLayoutBuses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/nuevo_mapa_bus"
+        android:columnCount="4">
+    </GridLayout>
+
+</LinearLayout>

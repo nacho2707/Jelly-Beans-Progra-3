@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <TextView
+       android:id="@+id/simpleTextView"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:text="Rutas y Horarios"
+       android:textSize="25sp"
+       android:gravity = "center_horizontal"
+       android:textColor="#f000"
+       tools:ignore="MissingConstraints" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:text="Bus Avaroa"
+       android:paddingLeft="30px"
+       android:textSize="22sp"
+       android:background="#CE205B"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="49dp"
+       tools:ignore="MissingConstraints"/>
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text=" A: Prado(Monje Campero)                  7:00"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="87dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Plaza Avaroa - Sanchez Lima        7:06"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="106dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Pedro Salazar - Sanchez Lima       7:08"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="125dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Sanchez Lima - Kantutani               7:09"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="144dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Obrajes - Av. Ormachea                   7:14"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="163dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Av. Hector Ormachea (Plaza de La Loba)             7:15"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="182dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Colegio San Ignacio                          7:18"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="201dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Puente Amor de Dios                        7:22"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="220dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="      Campus                                                7:40"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="239dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#CE205B"
+       android:paddingLeft="30px"
+       android:text="Bus Alto Obrajes"
+       android:textSize="22sp"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="271dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text=" A:   Av. Del Maestro - Entrada Trillizos           7:05"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="-37dp"
+       tools:layout_editor_absoluteY="308dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="        Av. Del Maestro - Normal                           7:08"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="327dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="        Parque Quezada                                           7:10"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="346dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="        Raul Gamarra                                               7:12"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="365dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="        Alfredo Arias                                                7:13"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="384dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="        Calle 10 de Obrajes                                    7:15"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="403dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="        Av. Hector Ormachea                                7:17"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="422dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#CE2034"
+       android:paddingLeft="30px"
+       android:text="Bus Irpavi"
+       android:textSize="22sp"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="455dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="                                            A       B        C          D"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="496dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Catedral Castrense      7:00  9:05  11:10  13:10"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="515dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Calle 15 de Irpavi          7:05  9:08  11:15  13:15"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="534dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Calle 18 de Irpavi          7:08  9:11  11:18  13:18"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="553dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Pablo Sanchez              7:15  9:18  11:25  13:25"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="572dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Catedral Castrense      7:17  9:20  11:30  13:30"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="591dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Plaza Humboldt            7:22  9:22  11:35  13:35"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="610dp" />
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:textSize="15sp"
+       android:text="Campus                          7:40  9:50  11:55  13:55"
+       tools:ignore="MissingConstraints"
+       tools:layout_editor_absoluteX="0dp"
+       tools:layout_editor_absoluteY="629dp" />
+
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

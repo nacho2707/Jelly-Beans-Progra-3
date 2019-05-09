@@ -10,9 +10,9 @@
 
     <ImageView
         android:layout_width="131dp"
-        android:layout_height="308dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="224dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/image" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,10 +42,12 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:imeOptions="actionNext"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLines="1"
-
-                android:textSize="18sp" />
+                android:id="@+id/editTextCodigo"
+                android:textSize="18sp"
+                android:textColor="@color/colorExtraButtons"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -62,7 +64,8 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/title_contraseña"
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -72,8 +75,10 @@
                 android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:maxLines="1"
-
-                android:textSize="18sp" />
+                android:id="@+id/editTextContraseña"
+                android:textSize="18sp"
+                android:textColor="@color/colorExtraButtons"
+                />
         </LinearLayout>
 
         <Button
@@ -83,6 +88,14 @@
             android:text="Empezar"
             android:onClick="doLogin"
      />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Registrarse"
+            android:onClick="registro"
+            />
 
     </LinearLayout>
 
