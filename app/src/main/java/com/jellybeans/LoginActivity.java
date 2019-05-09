@@ -3,6 +3,8 @@ package com.jellybeans;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText editTextCodigo;
     EditText editTextContraseña;
+    ConexionSQLiteHelper conn;
 
     SharedPreferences sharedPreferences;
 
@@ -24,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bdUsuarios", 1);
+        conn = new ConexionSQLiteHelper(this, "bdUsuarios", 1);
 
         sharedPreferences = getSharedPreferences("OneTimeLogin", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("loginValue", false)) {
@@ -95,6 +98,8 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
+        boolean value = validarDatos();
+        return value;
 
 
 
@@ -110,6 +115,27 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        return true;
+
+
+
+       // return true;
+    }
+    // Select de la base de datos con un filtro
+    public boolean validarDatos() {
+        try {
+
+            Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM TABLA_USUARIO WHERE codigo = ? AND contrasena = ?", new String[]{editTextCodigo,editTextContraseña});
+            if (cursor.moveToNext()== false) {
+                Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_LONG).show();
+                return false;
+
+
+            }
+            cursor.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
