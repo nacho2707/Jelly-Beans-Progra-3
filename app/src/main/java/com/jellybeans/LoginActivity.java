@@ -98,8 +98,7 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
-        boolean value = validarDatos();
-        return value;
+        validarDatos();
 
 
 
@@ -118,13 +117,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-       // return true;
+        return true;
     }
     // Select de la base de datos con un filtro
     public boolean validarDatos() {
         try {
 
-            Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM TABLA_USUARIO WHERE codigo = ? AND contrasena = ?", new String[]{editTextCodigo,editTextContraseña});
+            Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM TABLA_USUARIO WHERE codigo = ? AND contrasena = ?"
+                    , new String[]{editTextCodigo.getText().toString(),editTextContraseña.getText().toString()});
             if (cursor.moveToNext()== false) {
                 Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_LONG).show();
                 return false;
