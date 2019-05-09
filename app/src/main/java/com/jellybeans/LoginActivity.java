@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        conn = new ConexionSQLiteHelper(this, "bdUsuarios", 1);
+        conn = new ConexionSQLiteHelper(this, "usuarios", 1);
 
         sharedPreferences = getSharedPreferences("OneTimeLogin", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("loginValue", false)) {
@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
 
         }
+        validarDatos();
     }
 
     public void registro(View view) {
@@ -126,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
     // Select de la base de datos con un filtro
     public boolean validarDatos() {
         try {
-            Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM TABLA_USUARIO WHERE codigo = ? AND contrasena = ?"
+            Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM usuarios WHERE codigo = ? AND contrasena = ?"
                     , new String[]{editTextCodigo.getText().toString(),editTextContraseña.getText().toString()});
             if (cursor.moveToNext()== false) {
                 Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_LONG).show();
