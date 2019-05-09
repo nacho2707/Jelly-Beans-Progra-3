@@ -33,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToRutasHorarios(View view){
-        Intent intent = new Intent(this,RutasBus.class);
-        startActivity(intent);
-    }
+
 
     public void goToLogOut(View view){
         boolean value= false;
@@ -47,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
 
         Intent intent= new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToRutasHorarios(){
+        Intent intent= new Intent(this, MainActivityRutaBuses.class);
         startActivity(intent);
     }
 
