@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
 
         }
+        buscar(view);
         validarDatos();
     }
 
@@ -58,7 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         } else {
 
         }
-        registrarUsuarios();
+        registrarUsuarios(view);
+
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("loginValue", true);
@@ -70,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //este ,etodo deberia ir en un pantalla de registrar usuario
-    public void registrarUsuarios() {
+    public void registrarUsuarios(View view) {
         /*SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Utilidades.CAMPO_CODIGO, editTextCodigo.getText().toString());
@@ -96,6 +98,70 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+    public void buscar(View view){
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String codigo = editTextCodigo.getText().toString();
+        if(!codigo.isEmpty()){
+            Cursor fila = db.rawQuery("select contrasena from ususarios where codigo = "+ codigo,null);
+            if(fila.moveToFirst()){
+                editTextContraseña.setText(fila.getString(0));
+                db.close();
+            }else{
+                Toast.makeText(this,"Usuario no encontrado ", Toast.LENGTH_SHORT).show();
+                db.close();
+            }
+
+        }else{
+            Toast.makeText(this,"Introduce el codigo",Toast.LENGTH_SHORT).show();
+
+        }
+    }
+    public void eliminar (View view){
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String codigo = editTextCodigo.getText().toString();
+        String contrasena = editTextContraseña.getText().toString();
+        if(!codigo.isEmpty()&& !contrasena.isEmpty()) {
+            int cantidad = db.delete("usuarios", "codigo=" , null);
+            editTextContraseña.setText("");
+            if(cantidad == 1){
+                Toast.makeText(this,"Usuario Eliminado",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this,"Usuario no encontrado",Toast.LENGTH_SHORT).show();
+            }
+
+
+        }else{
+
+            }
+
+
+    }
+    public void cambiarContrasena(){
+        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String codigo = editTextCodigo.getText().toString();
+        String contrasena = editTextContraseña.getText().toString();
+        if(!codigo.isEmpty()){
+            ContentValues registro = new ContentValues();
+            registro.put("codigo",codigo);
+            registro.put("contrasena",contrasena);
+            int cantidad = db.update("usuarios",registro,"contrasena="+ contrasena,null);
+            db.close();
+            if(cantidad == 1){
+                Toast.makeText(this,"Contrasena cambiada",Toast.LENGTH_SHORT).show();
+
+
+            }else{
+                Toast.makeText(this,"Pasword no encontrado",Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Toast.makeText(this,"Debes llenar todos los campos",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     public boolean validar() {
         editTextContraseña.setError(null);
@@ -122,6 +188,7 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
+
         return validarDatos();
     }
     // Select de la base de datos con un filtro
@@ -132,6 +199,8 @@ public class LoginActivity extends AppCompatActivity {
             if (cursor.moveToNext()== false) {
                 Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_LONG).show();
                 return false;
+            }else{
+                Toast.makeText(this,"Login Exitoso",Toast.LENGTH_LONG).show();
             }
             cursor.close();
             return true;
