@@ -39,16 +39,18 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void doLogin(View view) {
-        buscar(view);
+        //buscar();
         if (validarDatosIngresados()) {
             if (validarSiExisteEnDB()) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else {
                 // No existe en la base de datos
+                Toast.makeText(this, "Este usuario no existe, debe registrarse", Toast.LENGTH_SHORT).show();
             }
         } else {
             // Mal escrito
+            Toast.makeText(this, "Error en la escritura", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -99,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void buscar(View view) {
+    public void buscar() {
         SQLiteDatabase db = conn.getWritableDatabase();
         String codigo = editTextCodigo.getText().toString();
         if (!codigo.isEmpty()) {
