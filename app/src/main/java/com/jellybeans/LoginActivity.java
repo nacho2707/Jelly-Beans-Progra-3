@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +11,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.jellybeans.utilidades.Utilidades;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,24 +39,32 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void doLogin(View view) {
-        if (validar()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
-
-        }
         buscar(view);
-        validarDatos();
+        if (validarDatosIngresados()) {
+            if (validarSiExisteEnDB()) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                // No existe en la base de datos
+            }
+        } else {
+            // Mal escrito
+        }
     }
 
     public void registro(View view) {
-        if (validar()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
+        if (validarDatosIngresados()) {
+            if (validarSiExisteEnDB() == false) {
+                registrarUsuarios();
 
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                // Usuario ya existe
+            }
+        } else {
+            // Mal escrito
         }
-        registrarUsuarios(view);
 
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -71,99 +76,84 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //este ,etodo deberia ir en un pantalla de registrar usuario
-    public void registrarUsuarios(View view) {
-        /*SQLiteDatabase db = conn.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Utilidades.CAMPO_CODIGO, editTextCodigo.getText().toString());
-        values.put(Utilidades.CAMPO_CONTRASENA, editTextContraseña.getText().toString());
-        Long idResultante = db.insert(Utilidades.TABLA_USUARIO, Utilidades.CAMPO_CODIGO, values);
-        Toast.makeText(getApplicationContext(), "Codigo Registro: " + idResultante, Toast.LENGTH_SHORT).show();
-        db.close();*/
+    private boolean validarSiExisteEnDB() {
+        return conn.validarSiUsuarioExiste(editTextCodigo.getText().toString(), editTextContraseña.getText().toString());
+    }
 
-        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+    //este ,etodo deberia ir en un pantalla de registrar usuario
+    public void registrarUsuarios() {
+        SQLiteDatabase db = conn.getWritableDatabase();
         String codigo = editTextCodigo.getText().toString();
         String contrasena = editTextContraseña.getText().toString();
-        if(!codigo.isEmpty() && !contrasena.isEmpty()){
+        if (!codigo.isEmpty() && !contrasena.isEmpty()) {
             ContentValues registro = new ContentValues();
             registro.put("codigo", codigo);
             registro.put("contrasena", contrasena);
-            db.insert("usuarios",null, registro);
+            db.insert("usuarios", null, registro);
             db.close();
             editTextCodigo.setText("");
             editTextContraseña.setText("");
-            Toast.makeText(this,"Registro exitoso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
 
         }
 
     }
-    public void buscar(View view){
-        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+
+    public void buscar(View view) {
+        SQLiteDatabase db = conn.getWritableDatabase();
         String codigo = editTextCodigo.getText().toString();
-        if(!codigo.isEmpty()){
-            Cursor fila = db.rawQuery("select contrasena from ususarios where codigo = "+ codigo,null);
-            if(fila.moveToFirst()){
+        if (!codigo.isEmpty()) {
+            Cursor fila = db.rawQuery("select contrasena from ususarios where codigo = " + codigo, null);
+            if (fila.moveToFirst()) {
                 editTextContraseña.setText(fila.getString(0));
                 db.close();
-            }else{
-                Toast.makeText(this,"Usuario no encontrado ", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Usuario no encontrado ", Toast.LENGTH_SHORT).show();
                 db.close();
             }
 
-        }else{
-            Toast.makeText(this,"Introduce el codigo",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Introduce el codigo", Toast.LENGTH_SHORT).show();
 
         }
     }
-    public void eliminar (View view){
-        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+
+    public void eliminar(View view) {
+        SQLiteDatabase db = conn.getWritableDatabase();
         String codigo = editTextCodigo.getText().toString();
         String contrasena = editTextContraseña.getText().toString();
-        if(!codigo.isEmpty()&& !contrasena.isEmpty()) {
-            int cantidad = db.delete("usuarios", "codigo=" , null);
+        if (!codigo.isEmpty() && !contrasena.isEmpty()) {
+            int cantidad = db.delete("usuarios", "codigo=", null);
             editTextContraseña.setText("");
-            if(cantidad == 1){
-                Toast.makeText(this,"Usuario Eliminado",Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this,"Usuario no encontrado",Toast.LENGTH_SHORT).show();
+            if (cantidad == 1) {
+                Toast.makeText(this, "Usuario Eliminado", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
             }
 
 
-        }else{
+        } else {
 
-            }
+        }
 
 
     }
-    public void cambiarContrasena(){
-        ConexionSQLiteHelper admin = new ConexionSQLiteHelper(this,"base",1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+
+    public void cambiarContrasena() {
         String codigo = editTextCodigo.getText().toString();
         String contrasena = editTextContraseña.getText().toString();
-        if(!codigo.isEmpty()){
-            ContentValues registro = new ContentValues();
-            registro.put("codigo",codigo);
-            registro.put("contrasena",contrasena);
-            int cantidad = db.update("usuarios",registro,"contrasena="+ contrasena,null);
-            db.close();
-            if(cantidad == 1){
-                Toast.makeText(this,"Contrasena cambiada",Toast.LENGTH_SHORT).show();
 
+        boolean actualizacionCorrecta = conn.cambiarPassword(codigo, contrasena);
 
-            }else{
-                Toast.makeText(this,"Pasword no encontrado",Toast.LENGTH_SHORT).show();
-            }
-
-        }else{
-            Toast.makeText(this,"Debes llenar todos los campos",Toast.LENGTH_SHORT).show();
+        if (actualizacionCorrecta) {
+            Toast.makeText(this, "Contrasena cambiada", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    public boolean validar() {
+    public boolean validarDatosIngresados() {
         editTextContraseña.setError(null);
         editTextCodigo.setError(null);
 
@@ -188,25 +178,6 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
-
-        return validarDatos();
-    }
-    // Select de la base de datos con un filtro
-    public boolean validarDatos() {
-        try {
-            Cursor cursor =  conn.getReadableDatabase().rawQuery("SELECT * FROM usuarios WHERE codigo = ? AND contrasena = ?"
-                    , new String[]{editTextCodigo.getText().toString(),editTextContraseña.getText().toString()});
-            if (cursor.moveToNext()== false) {
-                Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_LONG).show();
-                return false;
-            }else{
-                Toast.makeText(this,"Login Exitoso",Toast.LENGTH_LONG).show();
-            }
-            cursor.close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        return true;
     }
 }
