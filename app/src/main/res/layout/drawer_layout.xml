@@ -5,58 +5,69 @@
     android:orientation="vertical">
 
     <include layout="@layout/drawer_header_layout" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="Ver mapa"
+                android:onClick="goToMap"
+                android:layout_margin="10dp"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="Ver mapa"
-        android:onClick="goToMap"
-        android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="Disponibilidad de asientos y reservas"
+                android:onClick="goToDisponibilidadAsientos"
+                android:layout_margin="10dp"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="Disponibilidad de asientos y reservas"
-        android:onClick="goToDisponibilidadAsientos"
-        android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="Contactos"
+                android:onClick="goToContacts"
+                android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="rutas y horarios"
+                android:onClick="goToRutas"
+                android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="Información"
+                android:onClick="goToInformation"
+                android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="Configurar Cuenta"
+                android:onClick="goToConfiguracionDeCuenta"
+                android:layout_margin="10dp"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="Contactos"
-        android:onClick="goToContacts"
-        android:layout_margin="10dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="rutas y horarios"
-        android:onClick="goToRutasHorarios"
-        android:layout_margin="10dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="Información"
-        android:onClick="goToInformation"
-        android:layout_margin="10dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="Configurar Cuenta"
-        android:onClick="goToSettings"
-        android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorExtraButtons"
+                android:text="Salir de la cuenta"
+                android:onClick="goToLogOut"
+                android:layout_margin="10dp"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorExtraButtons"
-        android:text="Salir de la cuenta"
-        android:onClick="goToLogOut"
-        android:layout_margin="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </LinearLayout>

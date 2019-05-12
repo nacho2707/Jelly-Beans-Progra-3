@@ -32,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MensajeAlerta.class);
         startActivity(intent);
     }
+    public void goToConfiguracionDeCuenta(View view){
+        Intent intent = new Intent(this, OpcionesCuenta.class);
+        startActivity(intent);
+    }
+    public void goToRutas(View view){
+        Intent intent = new Intent(this,MainActivityRutaBuses.class);
+        startActivity(intent);
+    }
+
 
 
 
@@ -47,14 +56,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToRutasHorarios(){
-        Intent intent= new Intent(this, MainActivityRutaBuses.class);
-        startActivity(intent);
-    }
-    public void goToSettings(){
-        Intent intent= new Intent(this, OpcionesCuenta.class);
-        startActivity(intent);
-    }
+
+
 
 
 

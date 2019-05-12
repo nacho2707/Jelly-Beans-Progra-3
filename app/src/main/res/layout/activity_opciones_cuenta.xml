@@ -45,7 +45,7 @@
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxLines="1"
-                android:id="@+id/editTextCodigo"
+                android:id="@+id/editTextCod"
                 android:textSize="18sp"
                 android:textColor="@color/colorExtraButtons"
                 />
@@ -76,7 +76,7 @@
                 android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:id="@+id/editTextContraseña"
+                android:id="@+id/editTextContrasena"
                 android:textSize="18sp"
                 android:textColor="@color/colorExtraButtons"
                 />

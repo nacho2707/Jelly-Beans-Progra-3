@@ -8,26 +8,26 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class OpcionesCuenta extends AppCompatActivity {
-    EditText editTextCodigo;
-    EditText editTextContraseña;
+    EditText editTextCod;
+    EditText editTextContrasena;
     ConexionSQLiteHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opciones_cuenta);
-        editTextCodigo = findViewById(R.id.editTextCodigo);
-        editTextContraseña = findViewById(R.id.editTextContraseña);
+        editTextCod = findViewById(R.id.editTextCod);
+        editTextContrasena = findViewById(R.id.editTextContrasena);
         conn = new ConexionSQLiteHelper(this, "usuarios", 1);
     }
     public void eliminar(View view) {
         SQLiteDatabase db = conn.getWritableDatabase();
-        String codigo = editTextCodigo.getText().toString();
-        String contrasena = editTextContraseña.getText().toString();
+        String codigo = editTextCod.getText().toString();
+        String contrasena = editTextContrasena.getText().toString();
         if (!codigo.isEmpty() && !contrasena.isEmpty()) {
-            int cantidad = db.delete("usuarios", "codigo=", null);
-            editTextCodigo.setText("");
-            editTextContraseña.setText("");
+            int cantidad = db.delete("usuarios", " codigo=? ", null);
+            editTextCod.setText("");
+            editTextContrasena.setText("");
             if (cantidad == 1) {
                 Toast.makeText(this, "Usuario Eliminado", Toast.LENGTH_SHORT).show();
             } else {
@@ -43,8 +43,8 @@ public class OpcionesCuenta extends AppCompatActivity {
 
     }
     public void cambiarContrasena() {
-        String codigo = editTextCodigo.getText().toString();
-        String contrasena = editTextContraseña.getText().toString();
+        String codigo = editTextCod.getText().toString();
+        String contrasena = editTextContrasena.getText().toString();
 
         boolean actualizacionCorrecta = conn.cambiarPassword(codigo, contrasena);
 
