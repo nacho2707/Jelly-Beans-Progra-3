@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             } else {
                 // Usuario ya existe
+                Toast.makeText(this, "Este usuario ya fue registrado", Toast.LENGTH_SHORT).show();
             }
         } else {
             // Mal escrito
