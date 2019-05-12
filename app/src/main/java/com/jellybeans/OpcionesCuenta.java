@@ -1,5 +1,7 @@
 package com.jellybeans;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,34 +27,47 @@ public class OpcionesCuenta extends AppCompatActivity {
         String codigo = editTextCod.getText().toString();
         String contrasena = editTextContrasena.getText().toString();
         if (!codigo.isEmpty() && !contrasena.isEmpty()) {
-            int cantidad = db.delete("usuarios", " codigo=? ", null);
+            int cantidad = db.delete("usuarios", " codigo= " + codigo  ,null);
+            db.close();
             editTextCod.setText("");
             editTextContrasena.setText("");
             if (cantidad == 1) {
                 Toast.makeText(this, "Usuario Eliminado", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+
             } else {
                 Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
             }
 
 
         } else {
-            Toast.makeText(this, "Debes escribir el codigo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
 
         }
 
 
     }
-    public void cambiarContrasena() {
+
+    /*public void cambiarPassword() {
+        SQLiteDatabase db = conn.getWritableDatabase();
         String codigo = editTextCod.getText().toString();
         String contrasena = editTextContrasena.getText().toString();
+        if (!codigo.isEmpty()&& !contrasena.isEmpty()) {
+            ContentValues valoresAActualizar = new ContentValues();
+            valoresAActualizar.put("codigo", codigo);
+            valoresAActualizar.put("contrasena", contrasena);
+            int cantidad = db.update("usuarios", valoresAActualizar, "codigo=" + codigo, null);
+            db.close();
+            if (cantidad == 1) {
+                Toast.makeText(this, "Contrasena cambiada", Toast.LENGTH_SHORT).show();
 
-        boolean actualizacionCorrecta = conn.cambiarPassword(codigo, contrasena);
-
-        if (actualizacionCorrecta) {
-            Toast.makeText(this, "Contrasena cambiada", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
 }
