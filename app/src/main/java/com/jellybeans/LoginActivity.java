@@ -121,26 +121,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void eliminar(View view) {
-        SQLiteDatabase db = conn.getWritableDatabase();
-        String codigo = editTextCodigo.getText().toString();
-        String contrasena = editTextContraseña.getText().toString();
-        if (!codigo.isEmpty() && !contrasena.isEmpty()) {
-            int cantidad = db.delete("usuarios", "codigo=", null);
-            editTextContraseña.setText("");
-            if (cantidad == 1) {
-                Toast.makeText(this, "Usuario Eliminado", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
-            }
-
-
-        } else {
-
-        }
-
-
-    }
 
     public void cambiarContrasena() {
         String codigo = editTextCodigo.getText().toString();

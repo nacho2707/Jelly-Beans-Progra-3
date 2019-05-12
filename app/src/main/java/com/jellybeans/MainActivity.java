@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(this, MainActivityRutaBuses.class);
         startActivity(intent);
     }
+    public void goToSettings(){
+        Intent intent= new Intent(this, OpcionesCuenta.class);
+        startActivity(intent);
+    }
+
 
 
 
