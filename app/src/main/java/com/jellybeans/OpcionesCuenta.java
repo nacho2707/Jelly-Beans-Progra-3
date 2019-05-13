@@ -27,7 +27,7 @@ public class OpcionesCuenta extends AppCompatActivity {
         String codigo = editTextCod.getText().toString();
         String contrasena = editTextContrasena.getText().toString();
         if (!codigo.isEmpty() && !contrasena.isEmpty()) {
-            int cantidad = db.delete("usuarios", " codigo= " + codigo  ,null);
+            int cantidad = db.delete("usuarios", " codigo = ? "  ,new String[]{codigo});
             db.close();
             editTextCod.setText("");
             editTextContrasena.setText("");
@@ -49,7 +49,7 @@ public class OpcionesCuenta extends AppCompatActivity {
 
     }
 
-    /*public void cambiarPassword() {
+    public void cambiarPassword() {
         SQLiteDatabase db = conn.getWritableDatabase();
         String codigo = editTextCod.getText().toString();
         String contrasena = editTextContrasena.getText().toString();
@@ -57,7 +57,7 @@ public class OpcionesCuenta extends AppCompatActivity {
             ContentValues valoresAActualizar = new ContentValues();
             valoresAActualizar.put("codigo", codigo);
             valoresAActualizar.put("contrasena", contrasena);
-            int cantidad = db.update("usuarios", valoresAActualizar, "codigo=" + codigo, null);
+            int cantidad = db.update("usuarios", valoresAActualizar, "codigo = ?", new String[]{codigo});
             db.close();
             if (cantidad == 1) {
                 Toast.makeText(this, "Contrasena cambiada", Toast.LENGTH_SHORT).show();
@@ -68,6 +68,6 @@ public class OpcionesCuenta extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
 
 }
